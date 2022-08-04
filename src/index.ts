@@ -13,8 +13,10 @@ import { log, format } from './logger';
   console.clear();
 
   for (let i = 0; i < views; i++) {
-    await axios.get('https://komarev.com/ghpvc/?username=' + username, { headers: { 'User-Agent': 'github-camo' } });
-    printUpdatingMessage(format(`Views botted: ${i + 1}/${views}`, 'info'));
+    try {
+      await axios.get('https://komarev.com/ghpvc/?username=' + username, { headers: { 'User-Agent': 'github-camo' } });
+      printUpdatingMessage(format(`Views botted: ${i + 1}/${views}`, 'info'));
+    } catch (error) { }
   }
 })();
 
